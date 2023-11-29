@@ -13,11 +13,11 @@ data = pd.read_csv("part2-training-testing-data/chirping_data.csv")
 x = data["Chirps"].values
 y = data["Temp"].values
 
+# reshape the x data into a 2D array
+x = x.reshape(-1,1)
+
 # separates the data into training and testing sets
 xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size = .2)
-
-# reshape the xtrain data into a 2D array
-xtrain = xtrain.reshape(-1, 1)
 
 # create the linear regression model using the training data
 model = LinearRegression().fit(xtrain, ytrain)
@@ -37,7 +37,7 @@ print("R Squared value:", r_squared)
 '''
 
 # reshape the xtest data into a 2D array
-xtest = xtest.reshape(-1,1)
+# xtest = xtest.reshape(-1,1)
 # get the predicted y values for the xtest values - returns an array of the results
 predict = model.predict(xtest)
 # round the value in the np array to 2 decimal places
